@@ -1,0 +1,2 @@
+[db] tabela "reservas" verificada/criada com sucesso.
+[server] API de Reservas rodando na porta 3000

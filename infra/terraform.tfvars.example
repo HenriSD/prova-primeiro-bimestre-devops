@@ -1,0 +1,5 @@
+# Copie este arquivo para "terraform.tfvars" e ajuste os valores.
+# terraform.tfvars NUNCA deve ser commitado (adicione ao .gitignore se ainda nao tiver).
+
+db_password      = "troque-esta-senha-tambem"
+ssh_allowed_cidr = ["0.0.0.0/0"] # idealmente troque para "SEU.IP.PUBLICO/32"
