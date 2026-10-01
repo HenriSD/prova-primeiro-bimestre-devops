@@ -1,0 +1,4 @@
+usuario@DESKTOP-8CKVVGL:~/Aulas/prova-primeiro-bimestre-devops$ docker compose ps
+NAME           IMAGE                                COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+reservas-api   prova-primeiro-bimestre-devops-api   "docker-entrypoint.s…"   api       4 minutes ago   Up 4 minutes             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+reservas-db    postgres:16-alpine                   "docker-entrypoint.s…"   db        4 minutes ago   Up 4 minutes (healthy)   5432/tcp
