@@ -1,0 +1,100 @@
+usuario@DESKTOP-8CKVVGL:~/Aulas/prova-primeiro-bimestre-devops$ docker compose up --build
+[+] up 1/7
+ ✔ Image postgres:16-alpine Pulled                                                                                                                                                                                                       9.7s
+[+] Building 1.1s (16/16) FINISHED
+ => [internal] load local bake definitions                                                                                                                                                                                              0.0s
+ => => reading from stdin 594B                                                                                                                                                                                                          0.0s
+ => [internal] load build definition from Dockerfile                                                                                                                                                                                    0.0s
+ => => transferring dockerfile: 804B                                                                                                                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/node:22-alpine                                                                                                                                                                       0.8s
+ => [internal] load .dockerignore                                                                                                                                                                                                       0.0s
+ => => transferring context: 124B                                                                                                                                                                                                       0.0s
+ => [deps 1/4] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402                                                                                                            0.0s
+ => => resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402                                                                                                                 0.0s
+ => [internal] load build context                                                                                                                                                                                                       0.0s
+ => => transferring context: 190B                                                                                                                                                                                                       0.0s
+ => CACHED [deps 2/4] WORKDIR /app                                                                                                                                                                                                      0.0s
+ => CACHED [runner 3/7] RUN addgroup -S appgroup && adduser -S appuser -G appgroup                                                                                                                                                      0.0s
+ => CACHED [deps 3/4] COPY package.json package-lock.json ./                                                                                                                                                                            0.0s
+ => CACHED [deps 4/4] RUN npm ci --omit=dev                                                                                                                                                                                             0.0s
+ => CACHED [runner 4/7] COPY --from=deps /app/node_modules ./node_modules                                                                                                                                                               0.0s
+ => CACHED [runner 5/7] COPY package.json ./                                                                                                                                                                                            0.0s
+ => CACHED [runner 6/7] COPY src ./src                                                                                                                                                                                                  0.0s
+ => CACHED [runner 7/7] RUN chown -R appuser:appgroup /app                                                                                                                                                                              0.0s
+ => exporting to image                                                                                                                                                                                                                  0.1s
+ => => exporting layers                                                                                                                                                                                                                 0.0s
+ => => exporting manifest sha256:aad9d49dad308ae22d14e44cf2f8a21d209ecd45e213fe035eeab72ae5acd10b                                                                                                                                       0.0s
+ => => exporting config sha256:4df661b16dbcb4d9863a5b440e9d7af6c7f13ad49632b13e2bba0d20c526cb1e                                                                                                                                         0.0s
+ => => exporting attestation manifest sha256:0edfdbcb70822cb224b8249513d204d0c7f81b43a4d7e4bda1cc86924edc81f8                                                                                                                           0.0s
+ => => exporting manifest list sha256:264ec76465fd90d02d60ed16d222a84fd26c206d6dee3a74f4763e2b63617e51                                                                                                                                  0.0s
+ => => naming to docker.io/library/prova-primeiro-bimestre-devops-api:latest                                                                                                                                                            0.0s
+[+] up 6/12cking to docker.io/library/prova-primeiro-bimestre-devops-api:latest                                                                                                                                                         0.0s
+ ✔ Image postgres:16-alpine                            Pulled                                                                                                                                                                            9.7s
+ ✔ Image prova-primeiro-bimestre-devops-api            Built                                                                                                                                                                             1.2s
+ ✔ Network prova-primeiro-bimestre-devops_reservas-net Created                                                                                                                                                                           0.0s
+ ✔ Volume reservas-db-data                             Created                                                                                                                                                                           0.0s
+ ✔ Container reservas-db                               Created                                                                                                                                                                           1.5s
+ ✔ Container reservas-api                              Created                                                                                                                                                                           0.1s
+Attaching to reservas-api, reservas-db
+Container reservas-db Waiting
+reservas-db  | The files belonging to this database system will be owned by user "postgres".
+reservas-db  | This user must also own the server process.
+reservas-db  |
+reservas-db  | The database cluster will be initialized with locale "en_US.utf8".
+reservas-db  | The default database encoding has accordingly been set to "UTF8".
+reservas-db  | The default text search configuration will be set to "english".
+reservas-db  |
+reservas-db  | Data page checksums are disabled.
+reservas-db  |
+reservas-db  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+reservas-db  | creating subdirectories ... ok
+reservas-db  | selecting dynamic shared memory implementation ... posix
+reservas-db  | selecting default max_connections ... 100
+reservas-db  | selecting default shared_buffers ... 128MB
+reservas-db  | selecting default time zone ... UTC
+reservas-db  | creating configuration files ... ok
+reservas-db  | running bootstrap script ... ok
+reservas-db  | sh: locale: not found
+reservas-db  | 2026-10-01 03:26:42.907 UTC [35] WARNING:  no usable system locales were found
+reservas-db  | performing post-bootstrap initialization ... ok
+reservas-db  | syncing data to disk ... ok
+reservas-db  |
+reservas-db  |
+reservas-db  | Success. You can now start the database server using:
+reservas-db  |
+reservas-db  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+reservas-db  |
+reservas-db  | initdb: warning: enabling "trust" authentication for local connections
+reservas-db  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+reservas-db  | waiting for server to start....2026-10-01 03:26:43.590 UTC [41] LOG:  starting PostgreSQL 16.15 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+reservas-db  | 2026-10-01 03:26:43.595 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+reservas-db  | 2026-10-01 03:26:43.603 UTC [44] LOG:  database system was shut down at 2026-10-01 03:26:59 UTC
+reservas-db  | 2026-10-01 03:26:43.608 UTC [41] LOG:  database system is ready to accept connections
+reservas-db  |  done
+reservas-db  | server started
+reservas-db  | CREATE DATABASE
+reservas-db  |
+reservas-db  |
+reservas-db  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+reservas-db  |
+reservas-db  | waiting for server to shut down...2026-10-01 03:26:43.729 UTC [41] LOG:  received fast shutdown request
+reservas-db  | .2026-10-01 03:26:43.730 UTC [41] LOG:  aborting any active transactions
+reservas-db  | 2026-10-01 03:26:43.732 UTC [41] LOG:  background worker "logical replication launcher" (PID 47) exited with exit code 1
+reservas-db  | 2026-10-01 03:26:43.732 UTC [42] LOG:  shutting down
+reservas-db  | 2026-10-01 03:26:43.733 UTC [42] LOG:  checkpoint starting: shutdown immediate
+reservas-db  | 2026-10-01 03:26:43.794 UTC [42] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.017 s, sync=0.041 s, total=0.062 s; sync files=301, longest=0.015 s, average=0.001 s; distance=4283 kB, estimate=4283 kB; lsn=0/1925D68, redo lsn=0/1925D68
+reservas-db  | 2026-10-01 03:26:43.800 UTC [41] LOG:  database system is shut down
+reservas-db  |  done
+reservas-db  | server stopped
+reservas-db  |
+reservas-db  | PostgreSQL init process complete; ready for start up.
+reservas-db  |
+reservas-db  | 2026-10-01 03:26:43.849 UTC [1] LOG:  starting PostgreSQL 16.15 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+reservas-db  | 2026-10-01 03:26:43.849 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+reservas-db  | 2026-10-01 03:26:43.849 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+reservas-db  | 2026-10-01 03:26:43.851 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+reservas-db  | 2026-10-01 03:26:43.855 UTC [57] LOG:  database system was shut down at 2026-10-01 03:26:43 UTC
+reservas-db  | 2026-10-01 03:26:43.859 UTC [1] LOG:  database system is ready to accept connections
+Container reservas-db Healthy
+reservas-api  | [db] tabela "reservas" verificada/criada com sucesso.
+reservas-api  | [server] API de Reservas rodando na porta 3000
