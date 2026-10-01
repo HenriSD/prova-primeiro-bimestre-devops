@@ -2,8 +2,13 @@ node_modules/
 .env
 .terraform/
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
 .terraform.lock.hcl
 *.pem
 .DS_Store
 npm-debug.log*
+*.tfvars
+!*.tfvars.example
+infra/chave-prova
+infra/chave-prova.pub
+infra/tfplan

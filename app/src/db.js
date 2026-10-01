@@ -10,6 +10,8 @@ const pool = new Pool({
   database: process.env.DB_NAME || 'reservas',
   max: 10,
   idleTimeoutMillis: 30000,
+  // RDS exige conexão SSL por padrão. Localmente (Compose) não precisa.
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
 });
 
 // Cria a tabela de reservas caso ainda não exista.
